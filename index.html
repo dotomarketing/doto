@@ -103,9 +103,17 @@
     <h2 id="authTitle">ورود به حساب</h2>
     <form id="authForm">
       <div id="nameField" style="display:none">
-        <label for="name">نام</label>
-        <input id="name" autocomplete="name" maxlength="80">
-      </div>
+  <label for="name">نام کاربری انگلیسی</label>
+  <input
+    id="name"
+    autocomplete="username"
+    minlength="3"
+    maxlength="30"
+    pattern="[a-zA-Z0-9_]+"
+    placeholder="مثلاً doto_user"
+  >
+  <small>۳ تا ۳۰ کاراکتر انگلیسی، عدد یا زیرخط</small>
+</div>
       <label for="email">ایمیل</label>
       <input id="email" type="email" autocomplete="email" required>
       <label for="password">رمز عبور</label>
