@@ -184,7 +184,7 @@ document.getElementById("authForm").addEventListener("submit", async function(ev
   };
 
   if (mode === "register") {
-    payload.name = document.getElementById("name").value.trim();
+    payload.username = document.getElementById("name").value.trim();
   }
 
   message.textContent = "لطفاً صبر کنید...";
@@ -210,7 +210,7 @@ document.getElementById("authForm").addEventListener("submit", async function(ev
 
     sessionStorage.setItem("doto_token", data.token);
     const user = data.user || {
-      name: payload.name || "",
+      username: payload.username || "",
       email: payload.email
     };
 
