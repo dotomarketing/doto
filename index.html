@@ -4,148 +4,221 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DOTO Platform</title>
+  <title>DOTO Market</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; }
     body {
-      font-family: Tahoma, sans-serif;
-      background: #080d19;
-      color: white;
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: #0b1020;
+      color: #fff;
     }
-
     header {
+      padding: 22px 7%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 22px 8%;
-      border-bottom: 1px solid #202a40;
+      border-bottom: 1px solid #26304b;
     }
-
-    .logo {
-      font-size: 28px;
-      font-weight: bold;
-      color: #42e6bd;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 12px;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 110px 20px;
-    }
-
-    .hero h1 {
-      font-size: clamp(32px, 6vw, 58px);
-      margin-bottom: 25px;
-    }
-
-    .hero h1 span {
-      color: #42e6bd;
-    }
-
-    .hero p {
-      color: #aab5c9;
-      font-size: 17px;
-      line-height: 2;
-      max-width: 650px;
-      margin: auto;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 35px;
-      padding: 15px 35px;
-      background: #42e6bd;
-      color: #08131c;
+    .logo { font-size: 27px; font-weight: bold; color: #61e6c2; }
+    button {
+      border: 0;
       border-radius: 10px;
-      text-decoration: none;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-size: 15px;
       font-weight: bold;
     }
-
+    .primary { background: #61e6c2; color: #08131b; }
+    .secondary { background: #26304b; color: white; }
+    main { padding: 65px 7%; text-align: center; }
+    h1 { font-size: 38px; }
+    .intro { color: #aebbd4; line-height: 2; }
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      padding: 30px 8% 80px;
+      grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
+      gap: 18px;
+      margin-top: 45px;
     }
-
-    .card {
-      background: #111b2d;
-      border: 1px solid #26354c;
-      padding: 30px;
-      border-radius: 15px;
-      text-align: center;
-    }
-
-    .card h2 {
-      color: #42e6bd;
-      margin-bottom: 15px;
-    }
-
-    .card p {
-      color: #aab5c9;
-      line-height: 2;
-    }
-
-    footer {
-      text-align: center;
+    .card, .panel {
+      background: #151e34;
+      border: 1px solid #293653;
+      border-radius: 16px;
       padding: 25px;
-      color: #8492a8;
-      border-top: 1px solid #202a40;
     }
+    .card p { color: #aebbd4; line-height: 1.8; }
+    .auth {
+      display: none;
+      max-width: 420px;
+      margin: 35px auto;
+      text-align: right;
+    }
+    input {
+      width: 100%;
+      margin: 9px 0 16px;
+      padding: 14px;
+      border-radius: 9px;
+      border: 1px solid #394765;
+      background: #0b1020;
+      color: white;
+      font-size: 15px;
+    }
+    .auth button { width: 100%; margin-top: 8px; }
+    .message { line-height: 1.8; color: #61e6c2; }
+    .error { color: #ff8c8c; }
+    #dashboard { display: none; max-width: 650px; margin: 35px auto; }
+    footer { text-align: center; padding: 30px; color: #8290aa; }
   </style>
 </head>
-
 <body>
+<header>
+  <div class="logo">DOTO MARKET</div>
+  <div>
+    <button class="secondary" onclick="showAuth('login')">ورود</button>
+    <button class="primary" onclick="showAuth('register')">ثبت‌نام</button>
+  </div>
+</header>
 
-  <header>
-    <div class="logo">DOTO</div>
-    <nav>
-      <a href="#home">خانه</a>
-      <a href="#features">امکانات</a>
-      <a href="#about">درباره ما</a>
-    </nav>
-  </header>
-
-  <section class="hero" id="home">
-    <h1>به دنیای <span>DOTO</span> خوش آمدید</h1>
-    <p>
-      یک پلتفرم دیجیتال مستقل برای مدیریت حساب،
-      مشاهده اطلاعات پروژه و دسترسی به امکانات اختصاصی.
-    </p>
-    <a href="#features" class="btn">شروع کنید</a>
-  </section>
-
-  <section class="cards" id="features">
-    <div class="card">
-      <h2>حساب کاربری</h2>
-      <p>مدیریت حساب و اطلاعات شخصی</p>
-    </div>
-
-    <div class="card">
-      <h2>داشبورد</h2>
-      <p>مشاهده اطلاعات و فعالیت‌های حساب</p>
-    </div>
-
-    <div class="card">
-      <h2>سیستم دعوت</h2>
-      <p>دعوت دوستان و مشاهده معرفی‌ها</p>
+<main>
+  <section id="home">
+    <h1>به دنیای DOTO خوش آمدید</h1>
+    <p class="intro">پلتفرم مستقل DOTO برای ساخت حساب کاربری و مدیریت فعالیت‌های شما</p>
+    <div class="cards">
+      <div class="card">
+        <h2>حساب کاربری</h2>
+        <p>حساب اختصاصی خود را ایجاد و مدیریت کنید.</p>
+      </div>
+      <div class="card">
+        <h2>پنل کاربری</h2>
+        <p>اطلاعات حساب خود را در یک محیط ساده ببینید.</p>
+      </div>
+      <div class="card">
+        <h2>دعوت دوستان</h2>
+        <p>در مراحل بعدی سیستم دعوت دوستان را اضافه می‌کنیم.</p>
+      </div>
     </div>
   </section>
 
-  <footer id="about">
-    © 2026 DOTO Platform
-  </footer>
+  <section id="auth" class="auth panel">
+    <h2 id="authTitle">ورود به حساب</h2>
+    <form id="authForm">
+      <div id="nameField" style="display:none">
+        <label for="name">نام</label>
+        <input id="name" autocomplete="name" maxlength="80">
+      </div>
+      <label for="email">ایمیل</label>
+      <input id="email" type="email" autocomplete="email" required>
+      <label for="password">رمز عبور</label>
+      <input id="password" type="password" autocomplete="current-password" minlength="8" required>
+      <button class="primary" id="submitButton" type="submit">ورود</button>
+    </form>
+    <p id="message" class="message" role="status"></p>
+    <button class="secondary" onclick="showHome()">بازگشت</button>
+  </section>
 
+  <section id="dashboard" class="panel">
+    <h2>پنل کاربری DOTO</h2>
+    <p id="welcome"></p>
+    <p id="userEmail"></p>
+    <button class="secondary" onclick="logout()">خروج از حساب</button>
+  </section>
+</main>
+
+<footer>© DOTO Market</footer>
+
+<script>
+const API = "https://doto-api.onrender.com";
+
+function showAuth(mode) {
+  document.getElementById("home").style.display = "none";
+  document.getElementById("dashboard").style.display = "none";
+  document.getElementById("auth").style.display = "block";
+  document.getElementById("authTitle").textContent =
+    mode === "register" ? "ایجاد حساب جدید" : "ورود به حساب";
+  document.getElementById("submitButton").textContent =
+    mode === "register" ? "ثبت‌نام" : "ورود";
+  document.getElementById("nameField").style.display =
+    mode === "register" ? "block" : "none";
+  document.getElementById("name").required = mode === "register";
+  document.getElementById("password").autocomplete =
+    mode === "register" ? "new-password" : "current-password";
+  document.getElementById("authForm").dataset.mode = mode;
+  document.getElementById("message").textContent = "";
+  document.getElementById("message").className = "message";
+}
+
+function showHome() {
+  document.getElementById("auth").style.display = "none";
+  document.getElementById("dashboard").style.display = "none";
+  document.getElementById("home").style.display = "block";
+}
+
+function showDashboard(user) {
+  document.getElementById("home").style.display = "none";
+  document.getElementById("auth").style.display = "none";
+  document.getElementById("dashboard").style.display = "block";
+  document.getElementById("welcome").textContent =
+    "خوش آمدید " + (user.name || "کاربر عزیز");
+  document.getElementById("userEmail").textContent =
+    "ایمیل: " + user.email;
+}
+
+document.getElementById("authForm").addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  const mode = this.dataset.mode;
+  const message = document.getElementById("message");
+  const button = document.getElementById("submitButton");
+
+  const payload = {
+    email: document.getElementById("email").value.trim(),
+    password: document.getElementById("password").value
+  };
+
+  if (mode === "register") {
+    payload.name = document.getElementById("name").value.trim();
+  }
+
+  message.textContent = "لطفاً صبر کنید...";
+  message.className = "message";
+  button.disabled = true;
+
+  try {
+    const response = await fetch(API + "/api/auth/" + mode, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || data.error || "عملیات انجام نشد.");
+    }
+
+    if (!data.token) {
+      throw new Error("سرور توکن ورود را برنگرداند.");
+    }
+
+    sessionStorage.setItem("doto_token", data.token);
+    const user = data.user || {
+      name: payload.name || "",
+      email: payload.email
+    };
+
+    showDashboard(user);
+  } catch (error) {
+    message.textContent = error.message || "ارتباط با سرور برقرار نشد.";
+    message.className = "message error";
+  } finally {
+    button.disabled = false;
+  }
+});
+
+function logout() {
+  sessionStorage.removeItem("doto_token");
+  showHome();
+}
+</script>
 </body>
 </html>
-
