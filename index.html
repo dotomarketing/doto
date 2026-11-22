@@ -1,1 +1,151 @@
 
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOTO Platform</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Tahoma, sans-serif;
+      background: #080d19;
+      color: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 8%;
+      border-bottom: 1px solid #202a40;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #42e6bd;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 110px 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 6vw, 58px);
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: #42e6bd;
+    }
+
+    .hero p {
+      color: #aab5c9;
+      font-size: 17px;
+      line-height: 2;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 35px;
+      padding: 15px 35px;
+      background: #42e6bd;
+      color: #08131c;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 30px 8% 80px;
+    }
+
+    .card {
+      background: #111b2d;
+      border: 1px solid #26354c;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .card h2 {
+      color: #42e6bd;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      color: #aab5c9;
+      line-height: 2;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #8492a8;
+      border-top: 1px solid #202a40;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">DOTO</div>
+    <nav>
+      <a href="#home">خانه</a>
+      <a href="#features">امکانات</a>
+      <a href="#about">درباره ما</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <h1>به دنیای <span>DOTO</span> خوش آمدید</h1>
+    <p>
+      یک پلتفرم دیجیتال مستقل برای مدیریت حساب،
+      مشاهده اطلاعات پروژه و دسترسی به امکانات اختصاصی.
+    </p>
+    <a href="#features" class="btn">شروع کنید</a>
+  </section>
+
+  <section class="cards" id="features">
+    <div class="card">
+      <h2>حساب کاربری</h2>
+      <p>مدیریت حساب و اطلاعات شخصی</p>
+    </div>
+
+    <div class="card">
+      <h2>داشبورد</h2>
+      <p>مشاهده اطلاعات و فعالیت‌های حساب</p>
+    </div>
+
+    <div class="card">
+      <h2>سیستم دعوت</h2>
+      <p>دعوت دوستان و مشاهده معرفی‌ها</p>
+    </div>
+  </section>
+
+  <footer id="about">
+    © 2026 DOTO Platform
+  </footer>
+
+</body>
+</html>
+
