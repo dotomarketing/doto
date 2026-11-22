@@ -55,6 +55,7 @@ const authLimiter = rateLimit({
 });
 
 // Create users table
+
 async function initializeDatabase() {
   await pool.query(`
     CREATE TABLE IF NOT EXISTS users (
@@ -65,7 +66,39 @@ async function initializeDatabase() {
       created_at TIMESTAMPTZ DEFAULT NOW()
     )
   `);
+
+  // Add referral system columns without deleting existing users
+  await pool.query(`
+    ALTER TABLE users
+    ADD COLUMN IF NOT EXISTS referral_code VARCHAR(20)
+  `);
+
+  await pool.query(`
+    ALTER TABLE users
+    ADD COLUMN IF NOT EXISTS referred_by BIGINT
+    REFERENCES users(id) ON DELETE SET NULL
+  `);
+
+  // Generate codes for existing users
+  await pool.query(`
+    UPDATE users
+    SET referral_code =
+      'DOTO' || UPPER(
+        SUBSTRING(
+          MD5(RANDOM()::TEXT || id::TEXT || CLOCK_TIMESTAMP()::TEXT)
+          FROM 1 FOR 10
+        )
+      )
+    WHERE referral_code IS NULL
+  `);
+
+  // Ensure every referral code is unique
+  await pool.query(`
+    CREATE UNIQUE INDEX IF NOT EXISTS users_referral_code_unique
+    ON users(referral_code)
+  `);
 }
+
 
 // Create JWT
 function createToken(user) {
